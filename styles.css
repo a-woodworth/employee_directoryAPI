@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  background-color: hsl(0, 0%, 99%);
+  font-family: 'Open Sans', sans-serif;
+  padding: 0;
+  margin: 0;
+  min-width: 100vw;
+  min-height: 100vh;
+}
+
+main {
+  margin: 0 2.5%;
+  max-width: 100%;
+}
+
+h1 {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: .04rem;
+  margin: 20px 0;
+  text-transform: uppercase;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  column-gap: 25px;
+  row-gap: 20px;
+}
+
+li {
+  background-color: hsl(0, 0%, 100%);
+  border: 1.5px solid hsl(0, 0%, 89%);
+  border-radius: 4px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+  height: 140px;
+}
+
+.employee img {
+  border-radius: 50%;
+  margin-left: 18px;
+  height: 100px;
+  width: 100px;
+}
+
+.name {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.email, 
+.city {
+  color: hsl(210, 3%, 74%);
+  font-size: .85rem;
+  font-weight: 400;
+  margin: 0;
+}
+
+@media (min-width: 1024px) {
+  main {
+    margin: 0 auto;
+    width: 1024px;
+  }
+}
