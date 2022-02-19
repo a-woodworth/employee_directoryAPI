@@ -127,6 +127,7 @@ h1 {
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15), 
     0 2px 4px rgba(0, 0, 0, 0.12);
   margin: 75px auto auto;
+  height: 400px;
   width: 300px;
   padding: 30px;
   position: relative;
@@ -139,6 +140,23 @@ h1 {
 
 .modal-content {
   text-align: center;
+}
+
+.content h2 {
+  margin-bottom: 5px;
+}
+
+.content p.email {
+  margin-bottom: 5px;
+}
+
+.content p.phone,
+.content p.address {
+  margin: 0 0 10px;
+}
+
+.content p.birthday {
+  margin-bottom: 20px;
 }
 
 hr {
