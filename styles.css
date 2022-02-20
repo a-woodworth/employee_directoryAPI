@@ -50,6 +50,7 @@ h1 {
   background-color: hsl(0, 0%, 100%);
   border: 1.5px solid hsl(210, 16%, 82%);
   border-radius: 5px;
+  cursor: pointer;
   display: grid;
   grid-template-columns: 35% 65%;
   justify-items: center;
@@ -59,6 +60,15 @@ h1 {
   max-width: 100%;
   padding: 0 5px;
   margin: 0 auto;
+}
+
+.employee-card:hover {
+  box-shadow: 0 3px 0 hsl(360, 64%, 55%);
+}
+
+.employee-card:focus {
+  outline: 2px auto Highlight;
+  outline: 2px auto -webkit-focus-ring-color;
 }
 
 .avatar {
@@ -148,6 +158,16 @@ h1 {
 
 .content p.email {
   margin-bottom: 5px;
+}
+
+.content p.email a { 
+  color: hsl(211, 12%, 43%); 
+  text-decoration: none;
+}
+
+.content p.email a:hover {
+  color: hsl(360, 64%, 55%);
+  text-decoration: underline;
 }
 
 .content p.phone,

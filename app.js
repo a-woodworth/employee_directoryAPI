@@ -26,10 +26,12 @@ function displayEmployees(employeeData) {
     let picture = employee.picture;
 
     employeeHTML += `
-      <div class="employee-card" data-index ="${index}">
-        <img class="avatar" src="${picture.large}" alt="Photo of ${name.first} ${name.last}">
+      <div class="employee-card" data-index ="${index}" tabindex="0">
+        <img class="avatar" src="${picture.large}" alt="" role="presentation">
         <div class="text-container">
-          <h2 class="name">${name.first} ${name.last}</h2>
+          <h2 class="name">
+            <a href="#employeeModal" class="employee-link">${name.first} ${name.last}</a>
+          </h2>
           <p class="email">${email}</p>
           <p class="city">${city}</p>
         </div>
@@ -49,9 +51,9 @@ function displayModal(index) {
   
   const modalHTML = `
     <img class="avatar" src="${picture.large}" alt="Photo of ${name.first} ${name.last}">
-    <div class="content">
+    <div class="content" role="dialog" aria-labelledby="directory listing">
       <h2 class="name">${name.first} ${name.last}</h2>
-      <p class="email">${email}</p>
+      <p class="email"><a href="mailto:${email}">${email}</a></p>
       <p class="city">${city}</p>
       <hr>
       <p class="phone">${formatPhoneNumber(phone)}</p>
@@ -88,7 +90,7 @@ modalClose.addEventListener('click', () => {
 
 // Get rid of extra dash in API phone number string
 let formatPhoneNumber = (phoneNumberString) => {
-  
+
   // Filter only numbers from input
   let cleaned = (phoneNumberString).replace(/\D/g, '');
 
