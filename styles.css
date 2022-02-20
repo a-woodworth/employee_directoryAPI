@@ -64,11 +64,23 @@ h1 {
 
 .employee-card:hover {
   box-shadow: 0 3px 0 hsl(360, 64%, 55%);
+  transition: .75s ease;
+
 }
 
 .employee-card:focus {
   outline: 2px auto Highlight;
   outline: 2px auto -webkit-focus-ring-color;
+}
+
+.employee-card h2 a {
+  color: hsl(210, 24%, 16%);
+  text-decoration: none;
+}
+
+.employee-card h2 a:hover {
+  color: hsl(360, 64%, 55%);
+  text-decoration: underline;
 }
 
 .avatar {
@@ -189,13 +201,34 @@ hr {
 .modal button {
   background-color: hsl(0, 0%, 100%);
   border: none;
+  color: hsl(211, 12%, 43%);
   cursor: pointer;
   font-family: 'Open Sans', sans-serif;
   font-size: 1.25rem;
   font-weight: 600;
+}
+
+.modal button.close {
   position: absolute;
-  top: 5px;
-  right: 15px;
+  top: 2.5%;
+  right: 5%;
+}
+
+.modal button.previous{
+  position: absolute;
+  top: 50%;
+  left: 2.5%;
+}
+
+.modal button.next {
+  position: absolute;
+  top: 50%;
+  right: 2.5%;
+}
+
+.modal button:hover {
+  color: hsl(360, 64%, 55%);
+  transform: scale(1.5);
 }
 
 @media (min-width: 400px) {

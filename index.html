@@ -3,6 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Font Awesome cdn link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
 
     <title>Awesome Startup Employee Directory</title>
@@ -17,10 +19,18 @@
     </main>
     <div id="#employeeModal" class="overlay hidden">
       <div class="modal">
-        <button class="modal-close">&#215;</button>
+        <button class="close">
+          <i class="fa-solid fa-xmark fa-sm"></i>
+        </button>
         <div class="modal-content">
           <!-- modal information will be added with JS here -->
         </div>
+        <button class="previous">
+          <i class="fa-solid fa-chevron-left fa-sm"></i>
+        </button>
+        <button class="next">
+          <i class="fa-solid fa-chevron-right fa-sm"></i>
+        </button>
       </div>
     </div>
     <script src="app.js"></script>

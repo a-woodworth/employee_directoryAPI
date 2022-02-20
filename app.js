@@ -4,7 +4,10 @@ let employees = [];
 const urlAPI = 'https://randomuser.me/api/?results=12&inc=name, picture, email, location, phone, picture, dob, &noinfo &nat=US';
 const overlay = document.querySelector('.overlay');
 const modalContainer = document.querySelector('.modal-content');
-const modalClose = document.querySelector('.modal-close');
+const modalClose = document.querySelector('.close');
+let currentModalSelection = 0;
+const previousBtn = document.querySelector('.previous');
+const nextBtn = document.querySelector('.next');
 
 // Get data from Random User Generator API
 fetch(urlAPI)
@@ -73,19 +76,44 @@ function displayModal(index) {
 }
 
 employeeList.addEventListener('click', e => {
+  getEmployeeListing(e);
+});
 
-  // User clicks on card NOT grid
-  if(e.target !== employeeList) {
-    // Get card element based on proximity to actual element clicked
-    const card = e.target.closest('.employee-card');
-    const index = card.getAttribute('data-index');
-
-    displayModal(index);
+employeeList.addEventListener('keydown', e => {
+  if (e.keyCode === 13) {
+    getEmployeeListing(e);
   }
 });
 
+// Close model via close button
 modalClose.addEventListener('click', () => {
   overlay.classList.add('hidden');
+});
+
+// Click previous modal button to get prev employee card
+previousBtn.addEventListener('click', (e) => {
+  if (currentModalSelection === 0) {
+    // Go to last employee card
+    currentModalSelection = 11;
+    displayModal(currentModalSelection);
+  } else {
+    // Move to previous card from current card index position
+    currentModalSelection--;
+    displayModal(currentModalSelection);
+  }
+});
+
+// Click next modal button to get next employee card
+nextBtn.addEventListener('click', (e) => {
+  if (currentModalSelection === 11) {
+    // Go to first employee card
+    currentModalSelection = 0;
+    displayModal(currentModalSelection);
+  } else {
+    // Move to next card from current card index position
+    currentModalSelection++;
+    displayModal(currentModalSelection);
+  }
 });
 
 // Get rid of extra dash in API phone number string
@@ -101,5 +129,19 @@ let formatPhoneNumber = (phoneNumberString) => {
     return `(${match[1]}) ${match[2]}-${match[3]}`;
   } else {
     return '';
+  }
+}
+
+function getEmployeeListing(e) {
+  // User clicks or focuses on card NOT grid
+  if(e.target !== employeeList) {
+    // Get card element based on proximity to actual element clicked
+    const card = e.target.closest('.employee-card');
+    const index = card.getAttribute('data-index');
+
+    // Get current index position for next/prev buttons
+    currentModalSelection = parseInt(index);
+
+    displayModal(index);
   }
 }
