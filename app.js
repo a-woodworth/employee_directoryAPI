@@ -42,7 +42,7 @@ function displayEmployees(employeeData) {
     `;
   });
   employeeList.innerHTML = employeeHTML;
-}  
+} 
 
 // Generate modal from employee data
 function displayModal(index) {
@@ -80,6 +80,7 @@ employeeList.addEventListener('click', e => {
 });
 
 employeeList.addEventListener('keydown', e => {
+  // If Enter key pressed open modal
   if (e.keyCode === 13) {
     getEmployeeListing(e);
   }
@@ -90,29 +91,34 @@ modalClose.addEventListener('click', () => {
   overlay.classList.add('hidden');
 });
 
+  // Close model with Escape key
+modalClose.addEventListener('keydown', (e) => {
+  if (e.keyCode === 'Escape' || e.keyCode === 27) {
+    overlay.classList.add('hidden');
+  }
+});
+
 // Click previous modal button to get prev employee card
-previousBtn.addEventListener('click', (e) => {
-  if (currentModalSelection === 0) {
-    // Go to last employee card
-    currentModalSelection = 11;
-    displayModal(currentModalSelection);
-  } else {
-    // Move to previous card from current card index position
-    currentModalSelection--;
-    displayModal(currentModalSelection);
+previousBtn.addEventListener('click', () => {
+  previous();
+});
+
+// Use left arrow key to get prev employee card
+previousBtn.addEventListener('keydown', (e) => {
+  if (e.keyCode === 'ArrowLeft' || e.keyCode === 37) {
+    previous(e);
   }
 });
 
 // Click next modal button to get next employee card
-nextBtn.addEventListener('click', (e) => {
-  if (currentModalSelection === 11) {
-    // Go to first employee card
-    currentModalSelection = 0;
-    displayModal(currentModalSelection);
-  } else {
-    // Move to next card from current card index position
-    currentModalSelection++;
-    displayModal(currentModalSelection);
+nextBtn.addEventListener('click', () => {
+  next();
+});
+
+// Use right arrow key to get next employee card
+nextBtn.addEventListener('keydown', (e) => {
+  if (e.keyCode === 'ArrowRight' || e.keyCode === 39) {
+    next(e);
   }
 });
 
@@ -143,5 +149,29 @@ function getEmployeeListing(e) {
     currentModalSelection = parseInt(index);
 
     displayModal(index);
+  }
+}
+
+function previous() {
+  if (currentModalSelection === 0) {
+    // Go to last employee card
+    currentModalSelection = 11;
+    displayModal(currentModalSelection);
+  } else {
+    // Move to previous card from current card index position
+    currentModalSelection--;
+    displayModal(currentModalSelection);
+  }
+}
+
+function next() {
+    if (currentModalSelection === 11) {
+    // Go to first employee card
+    currentModalSelection = 0;
+    displayModal(currentModalSelection);
+  } else {
+    // Move to next card from current card index position
+    currentModalSelection++;
+    displayModal(currentModalSelection);
   }
 }
