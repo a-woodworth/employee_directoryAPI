@@ -12,23 +12,33 @@
 
   <body>
     <header>
-      <h1>Awesome Startup Employee Directory</h1>
+      <div class="header-container">
+        <h1>Awesome Startup Employee Directory</h1>
+        <label for="search-input">Search for Employee</label>
+        <div class="search-box" role="search">
+          <span class="search-icon"><i class="fa-solid fa-magnifying-glass fa-md"></i></span>
+          <input type="search" id="search-input" name="search" placeholder="Betty White" 
+            maxlength="50" aria-label="Search by employee name">
+        </div>
+      </div>
     </header>
-    <main class="grid-container">
+    <main>
+      <ul class="grid-container" role="presentation">
       <!-- employee information will be added with JS here -->
+      </ul>
     </main>
-    <div id="#employeeModal" class="overlay hidden" tabindex="0">
+    <div id="employeeModal" class="overlay hidden" role="dialog" aria-labelledby="directory-listing">
       <div class="modal">
-        <button class="close">
+        <button class="close" aria-label="close">
           <i class="fa-solid fa-xmark fa-sm"></i>
         </button>
         <div class="modal-content">
           <!-- modal information will be added with JS here -->
         </div>
-        <button class="previous">
+        <button class="previous" aria-label="previous employee">
           <i class="fa-solid fa-chevron-left fa-sm"></i>
         </button>
-        <button class="next">
+        <button class="next" aria-label="next employee">
           <i class="fa-solid fa-chevron-right fa-sm"></i>
         </button>
       </div>

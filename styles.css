@@ -26,6 +26,50 @@ header {
   max-width: 100%;
 }
 
+.header-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  max-width: 100%;
+}
+
+h1 {
+  color: hsl(210, 24%, 16%);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: .04rem;
+  padding-left: 5px;
+  text-transform: uppercase;
+  margin-right: auto;
+}
+
+input[type="search"] {
+  font-family: 'Open Sans', sans-serif;
+  width: 230px;
+  height: 35px;
+  margin: 20px 5px 20px;
+  padding-left: 25px;
+  background-color: hsl(0, 0%, 100%);
+  border: 1.5px solid hsl(210, 16%, 82%);
+  border-radius: 5px;
+}
+
+.search-box {
+  position: relative;
+}
+
+.search-icon {
+  position: absolute;
+  top: 26px;
+  left: 12px;
+}
+
+label {
+  font-size: .85rem;
+  padding-right: 2px;
+}
+
 .grid-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -36,14 +80,10 @@ header {
   margin: 0 auto;
 }
 
-h1 {
-  color: hsl(210, 24%, 16%);
-  font-size: 1rem;
-  font-weight: 600;
-  letter-spacing: .04rem;
-  padding: 0 2.5px;
-  margin: 20px 0;
-  text-transform: uppercase;
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
 .employee-card {
@@ -68,7 +108,7 @@ h1 {
 
 }
 
-.employee-card:focus {
+*:focus {
   outline: 2px auto Highlight;
   outline: 2px auto -webkit-focus-ring-color;
 }

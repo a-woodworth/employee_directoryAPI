@@ -1,6 +1,7 @@
 // Global Variables
 const employeeList = document.querySelector('.grid-container');
 let employees = [];
+const searchbar = document.getElementById('search-input');
 const urlAPI = 'https://randomuser.me/api/?results=12&inc=name, picture, email, location, phone, picture, dob, &noinfo &nat=US';
 const overlay = document.querySelector('.overlay');
 const modalContainer = document.querySelector('.modal-content');
@@ -29,7 +30,8 @@ function displayEmployees(employeeData) {
     let picture = employee.picture;
 
     employeeHTML += `
-      <div class="employee-card" data-index ="${index}" tabindex="0">
+      <li class="employee-card" data-index ="${index}" tabindex="0" role="link" 
+      aria-description="Employee listing for ${name.first} ${name.last}">
         <img class="avatar" src="${picture.large}" alt="" role="presentation">
         <div class="text-container">
           <h2 class="name">
@@ -38,7 +40,7 @@ function displayEmployees(employeeData) {
           <p class="email">${email}</p>
           <p class="city">${city}</p>
         </div>
-      </div>
+      </li>
     `;
   });
   employeeList.innerHTML = employeeHTML;
@@ -53,9 +55,10 @@ function displayModal(index) {
   let date = new Date(dob.date);
   
   const modalHTML = `
-    <img class="avatar" src="${picture.large}" alt="Photo of ${name.first} ${name.last}">
-    <div class="content" role="dialog" aria-labelledby="directory listing">
-      <h2 class="name">${name.first} ${name.last}</h2>
+    <img class="avatar" src="${picture.large}" alt="Photo of ${name.first} ${name.last}"
+    role="presentation">
+    <div class="content">
+      <h2 class="name" id="directory-listing">${name.first} ${name.last}</h2>
       <p class="email"><a href="mailto:${email}">${email}</a></p>
       <p class="city">${city}</p>
       <hr>
@@ -80,8 +83,8 @@ employeeList.addEventListener('click', e => {
 });
 
 employeeList.addEventListener('keydown', e => {
-  // If Enter key pressed open modal
-  if (e.keyCode === 13) {
+  // If Enter or Space key pressed open modal
+  if (e.keyCode === 13 || e.keyCode === 32) {
     getEmployeeListing(e);
   }
 });
@@ -91,7 +94,7 @@ modalClose.addEventListener('click', () => {
   overlay.classList.add('hidden');
 });
 
-  // Close model with Escape key
+// Close model with Escape key
 modalClose.addEventListener('keydown', (e) => {
   if (e.keyCode === 'Escape' || e.keyCode === 27) {
     overlay.classList.add('hidden');
@@ -147,7 +150,7 @@ function getEmployeeListing(e) {
 
     // Get current index position for next/prev buttons
     currentModalSelection = parseInt(index);
-
+    
     displayModal(index);
   }
 }
@@ -165,13 +168,17 @@ function previous() {
 }
 
 function next() {
-    if (currentModalSelection === 11) {
-    // Go to first employee card
-    currentModalSelection = 0;
-    displayModal(currentModalSelection);
+  if (currentModalSelection === 11) {
+  // Go to first employee card
+  currentModalSelection = 0;
+  displayModal(currentModalSelection);
   } else {
     // Move to next card from current card index position
     currentModalSelection++;
     displayModal(currentModalSelection);
   }
+}
+
+function searchDirectory() {
+
 }
