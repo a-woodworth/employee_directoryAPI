@@ -5,8 +5,8 @@ const searchbar = document.getElementById('search-input');
 const urlAPI = 'https://randomuser.me/api/?results=12&inc=name, picture, email, location, phone, picture, dob, &noinfo &nat=US';
 const overlay = document.querySelector('.overlay');
 const modalContainer = document.querySelector('.modal-content');
-const modalClose = document.querySelector('.close');
 let currentModalSelection = 0;
+const modalClose = document.querySelector('.close');
 const previousBtn = document.querySelector('.previous');
 const nextBtn = document.querySelector('.next');
 
@@ -30,17 +30,19 @@ function displayEmployees(employeeData) {
     let picture = employee.picture;
 
     employeeHTML += `
-      <li class="employee-card" data-index ="${index}" tabindex="0" role="link" 
+      <div class="employee-card" data-index ="${index}" tabindex="0" role="link"
       aria-description="Employee listing for ${name.first} ${name.last}">
-        <img class="avatar" src="${picture.large}" alt="" role="presentation">
+        <img class="avatar" src="${picture.large}" alt="">
         <div class="text-container">
           <h2 class="name">
-            <a href="#employeeModal" class="employee-link">${name.first} ${name.last}</a>
+            <a href="#employeeModal" class="employee-link" aria-haspopup="true">
+              ${name.first} ${name.last}
+            </a>
           </h2>
           <p class="email">${email}</p>
           <p class="city">${city}</p>
         </div>
-      </li>
+      </div>
     `;
   });
   employeeList.innerHTML = employeeHTML;
@@ -75,7 +77,7 @@ function displayModal(index) {
     </div>
   `;
   overlay.classList.remove('hidden');
-  modalContainer.innerHTML = modalHTML;  
+  modalContainer.innerHTML = modalHTML;
 }
 
 employeeList.addEventListener('click', e => {
@@ -84,7 +86,7 @@ employeeList.addEventListener('click', e => {
 
 employeeList.addEventListener('keydown', e => {
   // If Enter or Space key pressed open modal
-  if (e.keyCode === 13 || e.keyCode === 32) {
+  if (document.activeElement && e.keyCode === 13 || e.keyCode === 32 ) {
     getEmployeeListing(e);
   }
 });
@@ -125,6 +127,22 @@ nextBtn.addEventListener('keydown', (e) => {
   }
 });
 
+// Basic Search
+searchbar.addEventListener('input', () => {
+  const cards = document.querySelectorAll('.employee-card');
+
+  cards.forEach( (card) => {
+    const employeeNames = card.querySelector('.name a');
+    const name = employeeNames.innerHTML.toLowerCase();
+
+    if ( name.includes(searchbar.value.toLowerCase()) ) {
+      card.classList.remove('hidden');
+    } else {
+      card.classList.add('hidden');
+    } 
+  });
+});
+
 // Get rid of extra dash in API phone number string
 let formatPhoneNumber = (phoneNumberString) => {
 
@@ -150,7 +168,7 @@ function getEmployeeListing(e) {
 
     // Get current index position for next/prev buttons
     currentModalSelection = parseInt(index);
-    
+
     displayModal(index);
   }
 }
@@ -177,8 +195,4 @@ function next() {
     currentModalSelection++;
     displayModal(currentModalSelection);
   }
-}
-
-function searchDirectory() {
-
 }
