@@ -46,6 +46,7 @@ h1 {
 
 input[type="search"] {
   font-family: 'Open Sans', sans-serif;
+  font-size: .85rem;
   width: 230px;
   height: 35px;
   margin: 20px 5px 20px;
@@ -59,16 +60,15 @@ input[type="search"] {
   position: relative;
 }
 
-.search-btn {
+.search-box span {
   position: absolute;
   background-color: inherit;
   border: none;
-  top: 29px;
+  top: 26px;
   right: 25px;
-  cursor: pointer;
 }
 
-.search-btn:hover {
+.search-box span:hover {
   color: hsl(360, 64%, 55%);
   transform: scale(1.5);
 }
@@ -121,12 +121,12 @@ ul {
   outline: 2px auto -webkit-focus-ring-color;
 }
 
-.employee-card h2 a {
+.employee-card h2 {
   color: hsl(210, 24%, 16%);
   text-decoration: none;
 }
 
-.employee-card h2 a:hover {
+.employee-card h2:hover {
   color: hsl(360, 64%, 55%);
   text-decoration: underline;
 }
@@ -220,12 +220,14 @@ ul {
   margin-bottom: 5px;
 }
 
-.content p.email a { 
+.content p.email a,
+.content p.phone a { 
   color: hsl(211, 12%, 43%); 
   text-decoration: none;
 }
 
-.content p.email a:hover {
+.content p.email a:hover,
+.content p.phone a:hover {
   color: hsl(360, 64%, 55%);
   text-decoration: underline;
 }

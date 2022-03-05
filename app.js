@@ -31,14 +31,11 @@ function displayEmployees(employeeData) {
 
     employeeHTML += `
       <div class="employee-card" data-index ="${index}" tabindex="0" role="link"
-      aria-description="Employee listing for ${name.first} ${name.last}">
+      aria-description="Employee listing for ${name.first} ${name.last}" 
+      aria-haspopup="true">
         <img class="avatar" src="${picture.large}" alt="">
         <div class="text-container">
-          <h2 class="name">
-            <a href="#employeeModal" class="employee-link" aria-haspopup="true">
-              ${name.first} ${name.last}
-            </a>
-          </h2>
+          <h2 class="name">${name.first} ${name.last}</h2>
           <p class="email">${email}</p>
           <p class="city">${city}</p>
         </div>
@@ -57,8 +54,7 @@ function displayModal(index) {
   let date = new Date(dob.date);
   
   const modalHTML = `
-    <img class="avatar" src="${picture.large}" alt="Photo of ${name.first} ${name.last}"
-    role="presentation">
+    <img class="avatar" src="${picture.large}" alt="Photo of ${name.first} ${name.last}">
     <div class="content">
       <h2 class="name" id="directory-listing">${name.first} ${name.last}</h2>
       <p class="email"><a href="mailto:${email}">${email}</a></p>
@@ -143,7 +139,7 @@ searchbar.addEventListener('input', () => {
 
   // Cycle through cards to get employee names
   cards.forEach( (card) => {
-    const employeeNames = card.querySelector('.name a');
+    const employeeNames = card.querySelector('.name');
     const name = employeeNames.innerHTML.toLowerCase();
 
     // Check name against value and show or hide card matches
