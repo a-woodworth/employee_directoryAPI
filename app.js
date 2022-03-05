@@ -64,7 +64,7 @@ function displayModal(index) {
       <p class="email"><a href="mailto:${email}">${email}</a></p>
       <p class="city">${city}</p>
       <hr>
-      <p class="phone">${formatPhoneNumber(phone)}</p>
+      <p class="phone"><a href="tel:+1-${formatPhoneNumber(phone)[0]}">${formatPhoneNumber(phone)[1]}</a></p>
       <p class="address">
         <span class="street-number">${street.number}</span>
         <span class="street-name"> ${street.name},</span>
@@ -80,14 +80,24 @@ function displayModal(index) {
   modalContainer.innerHTML = modalHTML;
 }
 
-employeeList.addEventListener('click', e => {
+employeeList.addEventListener('click', (e) => {
   getEmployeeListing(e);
+  modalClose.focus();
 });
 
-employeeList.addEventListener('keydown', e => {
-  // If Enter or Space key pressed open modal
-  if (document.activeElement && e.keyCode === 13 || e.keyCode === 32 ) {
+employeeList.addEventListener('keyup', (e) => {
+  // If Enter key pressed open modal
+  if (e.keyCode === 13) {
     getEmployeeListing(e);
+    modalClose.focus();
+  }
+});
+
+employeeList.addEventListener('keydown', (e) => {
+  // If Space key pressed open modal
+  if (e.keyCode === 32) {
+    getEmployeeListing(e);
+    modalClose.focus();
   }
 });
 
@@ -131,10 +141,12 @@ nextBtn.addEventListener('keydown', (e) => {
 searchbar.addEventListener('input', () => {
   const cards = document.querySelectorAll('.employee-card');
 
+  // Cycle through cards to get employee names
   cards.forEach( (card) => {
     const employeeNames = card.querySelector('.name a');
     const name = employeeNames.innerHTML.toLowerCase();
 
+    // Check name against value and show or hide card matches
     if ( name.includes(searchbar.value.toLowerCase()) ) {
       card.classList.remove('hidden');
     } else {
@@ -143,8 +155,11 @@ searchbar.addEventListener('input', () => {
   });
 });
 
-// Get rid of extra dash in API phone number string
+// Format API phone number string for use in link and text
 let formatPhoneNumber = (phoneNumberString) => {
+  let phoneLink = '';
+  let phoneNumber = '';
+  let phoneNumbers = [];
 
   // Filter only numbers from input
   let cleaned = (phoneNumberString).replace(/\D/g, '');
@@ -153,7 +168,10 @@ let formatPhoneNumber = (phoneNumberString) => {
   let match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
 
   if (match) {
-    return `(${match[1]}) ${match[2]}-${match[3]}`;
+    phoneLink = `${match[1]}-${match[2]}-${match[3]}`;
+    phoneNumber = `(${match[1]}) ${match[2]}-${match[3]}`;
+    phoneNumbers = [phoneLink, phoneNumber]
+    return phoneNumbers;
   } else {
     return '';
   }
