@@ -1,0 +1,39 @@
+// ___________________________________________________________________
+// Global Config
+// ___________________________________________________________________
+
+// Google Font Stack
+$font-url--google: 'https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap';
+
+//Font Stack
+$font-family--primary: 'Open Sans', sans-serif;
+
+// Font Weights
+$font-weight--extra-bold: 700;
+$font-weight--bold: 600;
+$font-weight--regular: 400;
+
+// Descriptive Base Colors
+$almost-black: #{'hsl(210, 24%, 16%)'};
+$ghost-gray: #{'hsl(216, 33%, 97%)'};
+$granite: #{'hsl(211, 12%, 43%)'};
+$mars-red: #{'hsl(360, 64%, 55%)'};
+$overlay-screen: #{'hsla(0, 0%, 39%, 0.4)'};
+$shady: #{'hsla(0, 0%, 0%, 0.2)'};
+$silver-gray: #{'hsl(210, 16%, 82%)'};
+$white: #{'hsl(0, 0%, 100%)'};
+
+// Color Usage
+$color-accent: $mars-red;
+$color-bg-primary: $ghost-gray;
+$color-bg-secondary: $white;
+$color-border: $silver-gray; 
+
+// Text
+$base__font-size: 1rem;
+$paragraph__font-size: .85rem;
+$headline__spacing: .04rem;
+
+// Breakpoints
+$brkpoint-sm: '(min-width: 400px)';
+$brkpoint-lg: '(min-width: 1200px)';

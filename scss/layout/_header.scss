@@ -1,0 +1,53 @@
+// ___________________________________________________________________
+// Header
+// ___________________________________________________________________
+
+main,
+header {
+  margin: 0 auto;
+  max-width: 100%;
+
+  @media #{$brkpoint-lg} {
+    max-width: 1200px;
+  }
+}
+
+.header-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  max-width: 100%;
+}
+
+// Searchbar
+input[type="search"] {
+  @include rounded(5px);
+  @include size(230px, 35px);
+  @include text($paragraph__font-size, $font-weight--regular, $almost-black);
+  background-color: $white;
+  border: 1.5px solid $color-border;
+  font-family: $font-family--primary;
+  margin: 20px 5px 20px;
+  padding-left: 15px;
+}
+
+.search-box {
+  @include position(relative);
+}
+
+.search-box span {
+  @include position(absolute, $top: 26px, $right: 25px);
+  background-color: inherit;
+  border: none;
+
+  &:hover {
+    color: $mars-red;
+    transform: scale(1.5);
+  }
+}
+
+label {
+  font-size: $paragraph__font-size;
+  padding-right: 2px;
+}

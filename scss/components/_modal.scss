@@ -1,0 +1,100 @@
+// ___________________________________________________________________
+// Modal & Overlay Styles
+// ___________________________________________________________________
+
+.overlay {
+  @include position(absolute, 0, 0, 0, 0);
+  background: $overlay-screen;
+}
+
+.hidden {
+  display: none;
+}
+
+.modal {
+  @include position(relative);
+  @include rounded(5px);
+  @include size(300px, 400px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: $color-bg-secondary;
+  border: 1px solid $color-border;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15), 
+    0 2px 4px rgba(0, 0, 0, 0.12);
+  margin: 75px auto auto;
+  padding: 30px;
+
+  .avatar {
+    @include size(128px);
+  }
+
+  @media #{$brkpoint-sm} {
+    width: 375px;
+  }
+}
+
+.modal-content {
+  text-align: center;
+}
+
+.content {
+  h2,
+  p.email {
+    margin-bottom: 5px;
+  }
+
+  p.phone,
+  p.address {
+    margin: 0 0 10px;
+  }
+
+  p.birthday {
+    margin-bottom: 20px;
+  }
+  
+  p.email a,
+  p.phone a { 
+  color: $granite; 
+  text-decoration: none;
+
+  &:hover {
+    color: $color-accent;
+    text-decoration: underline;
+    }
+  }
+}
+
+hr {
+  background-color: $silver-gray;
+  border: none; 
+  height: 1px;
+  margin: 25px -50px;
+}
+
+.modal button {
+  @include text(1.25rem, $font-weight--bold);
+  background-color: $color-bg-secondary;
+  border: none;
+  color: $granite;
+  cursor: pointer;
+  font-family: $font-family--primary;
+
+  &:hover {
+    color: $color-accent;
+    transform: scale(1.5);
+  }
+}
+
+.modal button.close {
+  @include position(absolute, $top: 2.5%, $right: 5%);
+}
+
+.modal button.previous{
+  @include position(absolute, $top: 50%, $left: 2.5%);
+}
+
+.modal button.next {
+  @include position(absolute, $top: 50%, $right: 2.5%);
+}

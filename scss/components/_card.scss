@@ -1,0 +1,70 @@
+// ___________________________________________________________________
+// Card Styles
+// ___________________________________________________________________
+
+.employee-card {
+  @include rounded(5px);
+  @include size(375px, 140px);
+  background-color: $color-bg-secondary;
+  border: 1.5px solid $color-border;
+  cursor: pointer;
+  display: grid;
+  grid-template-columns: 35% 65%;
+  justify-items: center;
+  align-items: center;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 5px;
+
+  &:hover {
+  box-shadow: 0 3px 0 $color-accent;
+  transition: .75s ease;
+  }
+
+  h2 {
+    color: $almost-black;
+    text-decoration: none;
+
+  &:hover {
+    color: $color-accent;
+    text-decoration: underline;
+    }
+  } 
+}
+
+.avatar {
+  @extend %img-circle;
+  @include size(100px);
+  box-shadow: inset 0 2px 4px 0 $shady;
+  margin: 18px 20px;
+}
+
+.text-container {
+  justify-self: start;
+  align-self: center;
+  margin: 0 5px;
+  width: calc(100% - 10px);
+}
+
+.name {
+  @include text($base__font-size, $font-weight--extra-bold, $almost-black);
+  margin: 0;
+}
+
+// Handle long names/email addresses
+.name, 
+.email {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+}
+
+.email, 
+.city,
+.phone,
+.address span,
+.birthday {
+  @include text($paragraph__font-size, $font-weight--regular, $granite);
+  margin: 0;
+}

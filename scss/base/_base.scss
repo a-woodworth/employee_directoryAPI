@@ -1,0 +1,36 @@
+// ___________________________________________________________________
+// Base Styles
+// ___________________________________________________________________
+
+html {
+  @include position(relative);
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+*:focus {
+  outline: 2px auto Highlight;
+  outline: 2px auto -webkit-focus-ring-color;
+}
+
+body {
+  background-color: $color-bg-primary;
+  font-family: $font-family--primary;
+  margin: 0;
+  padding: 0;
+  min-width: 100vw;
+  min-height: 100vh;
+}
+
+h1 {
+  @extend %allcaps;
+  @include text($base__font-size, $font-weight--bold, $almost-black);
+  letter-spacing: $headline__spacing;
+  margin-right: auto;
+  padding-left: 5px;
+}

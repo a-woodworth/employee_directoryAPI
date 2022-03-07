@@ -1,0 +1,280 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap");
+.avatar {
+  border-radius: 50%;
+}
+
+h1 {
+  text-transform: uppercase;
+}
+
+html {
+  position: relative;
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+*:focus {
+  outline: 2px auto Highlight;
+  outline: 2px auto -webkit-focus-ring-color;
+}
+
+body {
+  background-color: hsl(216, 33%, 97%);
+  font-family: "Open Sans", sans-serif;
+  margin: 0;
+  padding: 0;
+  min-width: 100vw;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: hsl(210, 24%, 16%);
+  letter-spacing: 0.04rem;
+  margin-right: auto;
+  padding-left: 5px;
+}
+
+.employee-card {
+  border-radius: 5px;
+  width: 375px;
+  height: 140px;
+  background-color: hsl(0, 0%, 100%);
+  border: 1.5px solid hsl(210, 16%, 82%);
+  cursor: pointer;
+  display: grid;
+  grid-template-columns: 35% 65%;
+  justify-items: center;
+  align-items: center;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 5px;
+}
+.employee-card:hover {
+  box-shadow: 0 3px 0 hsl(360, 64%, 55%);
+  transition: 0.75s ease;
+}
+.employee-card h2 {
+  color: hsl(210, 24%, 16%);
+  text-decoration: none;
+}
+.employee-card h2:hover {
+  color: hsl(360, 64%, 55%);
+  text-decoration: underline;
+}
+
+.avatar {
+  width: 100px;
+  height: 100px;
+  box-shadow: inset 0 2px 4px 0 hsla(0, 0%, 0%, 0.2);
+  margin: 18px 20px;
+}
+
+.text-container {
+  justify-self: start;
+  align-self: center;
+  margin: 0 5px;
+  width: calc(100% - 10px);
+}
+
+.name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: hsl(210, 24%, 16%);
+  margin: 0;
+}
+
+.name,
+.email {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+}
+
+.email,
+.city,
+.phone,
+.address span,
+.birthday {
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: hsl(211, 12%, 43%);
+  margin: 0;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: hsla(0, 0%, 39%, 0.4);
+}
+
+.hidden {
+  display: none;
+}
+
+.modal {
+  position: relative;
+  border-radius: 5px;
+  width: 300px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: hsl(0, 0%, 100%);
+  border: 1px solid hsl(210, 16%, 82%);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.12);
+  margin: 75px auto auto;
+  padding: 30px;
+}
+.modal .avatar {
+  width: 128px;
+  height: 128px;
+}
+@media (min-width: 400px) {
+  .modal {
+    width: 375px;
+  }
+}
+
+.modal-content {
+  text-align: center;
+}
+
+.content h2,
+.content p.email {
+  margin-bottom: 5px;
+}
+.content p.phone,
+.content p.address {
+  margin: 0 0 10px;
+}
+.content p.birthday {
+  margin-bottom: 20px;
+}
+.content p.email a,
+.content p.phone a {
+  color: hsl(211, 12%, 43%);
+  text-decoration: none;
+}
+.content p.email a:hover,
+.content p.phone a:hover {
+  color: hsl(360, 64%, 55%);
+  text-decoration: underline;
+}
+
+hr {
+  background-color: hsl(210, 16%, 82%);
+  border: none;
+  height: 1px;
+  margin: 25px -50px;
+}
+
+.modal button {
+  font-size: 1.25rem;
+  font-weight: 600;
+  background-color: hsl(0, 0%, 100%);
+  border: none;
+  color: hsl(211, 12%, 43%);
+  cursor: pointer;
+  font-family: "Open Sans", sans-serif;
+}
+.modal button:hover {
+  color: hsl(360, 64%, 55%);
+  transform: scale(1.5);
+}
+
+.modal button.close {
+  position: absolute;
+  top: 2.5%;
+  right: 5%;
+}
+
+.modal button.previous {
+  position: absolute;
+  top: 50%;
+  left: 2.5%;
+}
+
+.modal button.next {
+  position: absolute;
+  top: 50%;
+  right: 2.5%;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-rows: repeat(4, 1fr);
+  column-gap: 25px;
+  row-gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+main,
+header {
+  margin: 0 auto;
+  max-width: 100%;
+}
+@media (min-width: 1200px) {
+  main,
+header {
+    max-width: 1200px;
+  }
+}
+
+.header-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  max-width: 100%;
+}
+
+input[type=search] {
+  border-radius: 5px;
+  width: 230px;
+  height: 35px;
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: hsl(210, 24%, 16%);
+  background-color: hsl(0, 0%, 100%);
+  border: 1.5px solid hsl(210, 16%, 82%);
+  font-family: "Open Sans", sans-serif;
+  margin: 20px 5px 20px;
+  padding-left: 15px;
+}
+
+.search-box {
+  position: relative;
+}
+
+.search-box span {
+  position: absolute;
+  top: 26px;
+  right: 25px;
+  background-color: inherit;
+  border: none;
+}
+.search-box span:hover {
+  color: hsl(360, 64%, 55%);
+  transform: scale(1.5);
+}
+
+label {
+  font-size: 0.85rem;
+  padding-right: 2px;
+}
+
+/*# sourceMappingURL=main.css.map */
