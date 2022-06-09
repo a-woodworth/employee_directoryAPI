@@ -2,6 +2,9 @@
 // Modal & Overlay Styles
 // ___________________________________________________________________
 
+@use '../utilities/variables' as *;
+@use '../utilities/mixins' as *;
+
 .overlay {
   @include position(absolute, 0, 0, 0, 0);
   background: $overlay-screen;

@@ -2,6 +2,10 @@
 // Base Styles
 // ___________________________________________________________________
 
+@use '../utilities/variables' as *;
+@use '../utilities/helpers' as *;
+@use '../utilities/mixins' as *;
+
 html {
   @include position(relative);
   box-sizing: border-box;

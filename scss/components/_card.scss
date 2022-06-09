@@ -2,6 +2,10 @@
 // Card Styles
 // ___________________________________________________________________
 
+@use '../utilities/variables' as *;
+@use '../utilities/helpers' as *;
+@use '../utilities/mixins' as *;
+
 .employee-card {
   @include rounded(5px);
   @include size(375px, 140px);
